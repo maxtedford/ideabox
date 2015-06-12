@@ -3,4 +3,10 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
 
   # has_many :ideas
+  
+  validates :username,
+    presence: true,
+    uniqueness: true
+  validates :password,
+    presence: true
 end
