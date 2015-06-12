@@ -4,7 +4,12 @@ class SessionsController < ApplicationController
   
   def create
     user = User.find_by(username: params[:session][:username])
-    session[:user_id] = user.id
-    redirect_to user_path(user)
+    if user && user.authenticate(params[:session][:password])
+      session[:user_id] = user.id
+      redirect_to user_path(user)
+    else
+      flash.now[:errors] = "Invalid login credentials. Please try again"
+      render login_path
+    end
   end
 end
