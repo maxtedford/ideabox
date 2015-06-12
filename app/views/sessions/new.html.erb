@@ -1,11 +1,11 @@
+<h1>Login</h1>
 
-<!-- login form: -->
+<%= form_for(:session, url: login_path) do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %><br>
 
-  <!-- <%= form_for(:session, url: login_path) do |f| %>
-    <%= f.label :username %>
-    <%= f.text_field :username %><br>
+  <%= f.label :password %>
+  <%= f.password_field :password %><br>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %><br>
-
-    <%= f.submit "Login"%> -->
+  <%= f.submit "Login" %>
+<% end %>

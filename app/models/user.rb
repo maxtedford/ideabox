@@ -7,4 +7,10 @@ class User < ActiveRecord::Base
     uniqueness: true
 
   # has_many :ideas
+  
+  validates :username,
+    presence: true,
+    uniqueness: true
+  validates :password,
+    presence: true
 end
