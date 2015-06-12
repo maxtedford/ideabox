@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "user creates account", type: :feature do
 
-  it "presents an unregistered user with a welcome page" do
+  it "presents user with a welcome page" do
   visit users_path
 
   assert page.has_content?("Welcome to IdeaBox")
@@ -21,7 +21,6 @@ describe "user creates account", type: :feature do
   expect(User.all.count).to eq(1)
   reset_session!
   end
-
 end
 
 
