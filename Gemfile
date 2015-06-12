@@ -44,4 +44,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'better_errors'
+  gem 'pry'
 end
