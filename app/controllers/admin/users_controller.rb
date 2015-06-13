@@ -1,9 +1,9 @@
-class Admin::CategoriesController < Admin::BaseController
+class Admin::UsersController < Admin::BaseController
   def  index
 
   end
 
   def show
-    @admin_user = current_admin
+    @admin_user = User.find(params[:id])
   end
 end
