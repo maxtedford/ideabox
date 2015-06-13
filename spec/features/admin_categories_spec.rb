@@ -14,18 +14,17 @@ describe "registered admin user", type: :feature do
   # end
 
   it "presents logged in admin with user show page" do
-  admin = User.create(username: "admin",
+  admin = User.create(username: "chelsea",
                       password: "password",
                           role: 1)
   visit users_path
   click_link("Login")
-  fill_in "Username", with: "admin"
+  fill_in "Username", with: "chelsea"
   fill_in "Password", with: "password"
   click_button "Login"
-  visit admin_user_path
 
   expect(current_path).to eq(admin_user_path(admin))
-  assert page.has_content?("Welcome admin")
+  assert page.has_content?("Welcome chelsea")
   reset_session!
   end
 end
@@ -33,7 +32,9 @@ end
 
 # As a Registered Admin...
 
-# When I visit the root path, click "Login", then fill in the form and click "Login"...
+# When I visit the root path, click "Login",
+# then fill in the form and click "Login"...
 
-# I expect to be presented with my '/show' page which contains all my ideas,
+# I expect to be presented with my '/show' page
+# which contains all my ideas,
 # plus a "categories" link and an "images" link.
