@@ -27,14 +27,24 @@ describe "registered admin user", type: :feature do
   assert page.has_content?("Welcome chelsea")
   reset_session!
   end
+
+  it "allows an admin user to create a category" do
+  admin = User.create(username: "chelsea",
+                      password: "password",
+                          role: 1)
+  visit users_path
+  click_link("Login")
+  fill_in "Username", with: "chelsea"
+  fill_in "Password", with: "password"
+  click_button "Login"
+
+  click_link("Categories")
+  click_link("Add New Category")
+  fill_in "Name", with: "Ideas"
+  click_button "Create Category"
+  save_and_open_page
+  expect(current_path).to eq(category_path(admin))
+  assert page.has_content?("Ideas")
+  reset_session!
+  end
 end
-
-
-# As a Registered Admin...
-
-# When I visit the root path, click "Login",
-# then fill in the form and click "Login"...
-
-# I expect to be presented with my '/show' page
-# which contains all my ideas,
-# plus a "categories" link and an "images" link.
