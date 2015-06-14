@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :new, :create, :show]
 
-  resources :categories, only: [:index]
+  resources :categories, only: [:index, :create, :new, :show]
 
   resources :images, only: [:index]
 
