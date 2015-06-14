@@ -1,22 +1,25 @@
-class CategoriesController < ApplicationController
+class Admin::CategoriesController < Admin::BaseController
   def index
     @categories = Category.all
   end
 
   def new
     @category = Category.new
+    # @admin = User.find(params[:id])
+    # @category = Category.new(user_id: params[:user_id])
   end
 
   def edit
   end
 
   def show
+    @category = Category.find(params[:id])
   end
 
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to category_path(@category)
+      redirect_to admin_category_path(@category)
     else
       flash[:errors] = "Please try again!"
       render(:new)

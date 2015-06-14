@@ -42,8 +42,8 @@ describe "registered admin user", type: :feature do
   click_link("Add New Category")
   fill_in "Name", with: "Ideas"
   click_button "Create Category"
-  save_and_open_page
-  expect(current_path).to eq(category_path(admin))
+
+  expect(current_path).to eq(admin_category_path(admin))
   assert page.has_content?("Ideas")
   reset_session!
   end
