@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'user adds new idea', type: :feature do
   include Capybara::DSL
   
-  it "user dashboard includes a new idea link" do
+  xit "user dashboard includes a new idea link" do
     swifty = User.create(username: "tswift", password: "password")
     
     visit user_path(swifty)
