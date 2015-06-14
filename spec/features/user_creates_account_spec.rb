@@ -22,7 +22,7 @@ describe "user creates account", type: :feature do
   reset_session!
   end
 
-  it "creates a new account with errors" do
+  it "throws errors when a new account is missing attributes" do
   visit users_path
   click_link("Create Account")
   fill_in "Username", with: ""
