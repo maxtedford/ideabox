@@ -1,1 +1,11 @@
 <h1>Welcome <%= @user.username %></h1>
+
+<h2>Here are your ideas:</h2>
+
+<ol>
+  <% @user.ideas.each do |idea| %>
+    <li><h3><%= link_to "#{idea.title}", idea %></h3></li>
+  <% end %>
+</ol>
+
+<%= link_to "Add New Idea", new_idea_path(user_id: @user.id) %>

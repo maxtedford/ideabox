@@ -22,7 +22,7 @@ describe "user creates account", type: :feature do
   reset_session!
   end
 
-  it "creates a new account with errors" do
+  it "throws errors when a new account is missing attributes" do
   visit users_path
   click_link("Create Account")
   fill_in "Username", with: ""
@@ -32,14 +32,4 @@ describe "user creates account", type: :feature do
   assert page.has_content?("Missing Login Information!")
   reset_session!
   end
-
 end
-
-# As an Unregistered User...
-#
-# When I visit the root path, click "Create New Account",
-# then fill in the form with non-text in both the username and password fields,
-# and click "Create Account",
-#
-# I expect to be presented with a flash error that
-# I've entered invalid information and redirected to the create account page

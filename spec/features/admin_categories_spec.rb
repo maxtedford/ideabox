@@ -27,6 +27,26 @@ describe "registered admin user", type: :feature do
   assert page.has_content?("Welcome chelsea")
   reset_session!
   end
+  
+  it "presents logged in admin with logout link" do
+    admin = User.create(username: "chelsea",
+                        password: "password",
+                        role: 1)
+    
+    visit users_path
+    click_link("Login")
+    fill_in "Username", with: "chelsea"
+    fill_in "Password", with: "password"
+    click_button "Login"
+    
+    expect(current_path).to eq(admin_user_path(admin))
+    assert page.has_content?("Welcome chelsea")
+    
+    click_link "Logout"
+    expect(current_path).to eq(users_path)
+    assert page.has_content?("Welcome to IdeaBox")
+    reset_session!
+  end
 
   it "allows an admin user to create a category" do
   admin = User.create(username: "chelsea",

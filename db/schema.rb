@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20150614163409) do
   add_index "idea_images", ["idea_id"], name: "index_idea_images_on_idea_id"
   add_index "idea_images", ["image_id"], name: "index_idea_images_on_image_id"
 
+  create_table "ideas", force: :cascade do |t|
+    t.string   "title"
+    t.string   "body"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "ideas", ["user_id"], name: "index_ideas_on_user_id"
+
   create_table "images", force: :cascade do |t|
     t.string   "url"
     t.datetime "created_at", null: false
@@ -42,5 +52,4 @@ ActiveRecord::Schema.define(version: 20150614163409) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
-
 end
