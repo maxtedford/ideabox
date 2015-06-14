@@ -45,4 +45,5 @@ group :development, :test do
   gem 'capybara'
   gem 'better_errors'
   gem 'pry'
+  gem 'launchy'
 end
