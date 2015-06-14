@@ -29,6 +29,14 @@ class IdeasController < ApplicationController
     flash.notice = "Idea '#{@idea.title}' has been updated!"
     redirect_to @idea
   end
+  
+  def destroy
+    @idea = Idea.find(params[:id])
+    @idea.destroy
+    
+    flash.notice = "Idea '#{@idea.title}' is gone-zo!"
+    redirect_to @idea.user
+  end
   private
   
   def idea_params
