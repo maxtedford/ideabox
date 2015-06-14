@@ -18,6 +18,17 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params[:id])
   end
   
+  def edit
+    @idea = Idea.find(params[:id])
+  end
+  
+  def update
+    @idea = Idea.find(params[:id])
+    @idea.update(idea_params)
+    
+    flash.notice = "Idea '#{@idea.title}' has been updated!"
+    redirect_to @idea
+  end
   private
   
   def idea_params
