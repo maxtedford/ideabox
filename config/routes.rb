@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new, :create, :show]
   resources :ideas, only: [:new, :create, :show]
 
+  resources :categories, only: [:index]
+
+  resources :images, only: [:index]
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
 end
