@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      flash.now[:errors] = @user.errors.full_messages.join(", ")
+      flash.notice = "Missing Login Information!"  #flash[:errors] = "Please try again!"
       render :new
     end
   end
