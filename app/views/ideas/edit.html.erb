@@ -1,0 +1,13 @@
+<h1>Edit this idea:</h1>
+
+<%= form_for(@idea) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %><br>
+
+  <%= f.label :body %>
+  <%= f.text_field :body %><br>
+
+  <%= f.hidden_field :user_id %><br>
+
+  <%= f.submit "Update Idea" %>
+<% end %>

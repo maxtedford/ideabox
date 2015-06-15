@@ -4,7 +4,7 @@
 
 <ol>
   <% @user.ideas.each do |idea| %>
-    <li><h3><%= link_to "#{idea.title}", idea %></h3></li>
+    <li><h3><%= link_to "#{idea.title}", idea %></h3><%= button_to "Edit Idea", edit_idea_path(idea), method: :get %><%= button_to "Delete", idea_path(idea), method: :delete %></li>
   <% end %>
 </ol>
 
