@@ -35,6 +35,12 @@ class Admin::CategoriesController < Admin::BaseController
     end
   end
 
+  def destroy
+    @category.destroy
+    flash.notice = "Category '#{@category.name}' DELETED!!"
+    redirect_to(admin_categories_path)
+  end
+
 private
 
   def category_params
