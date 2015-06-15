@@ -51,13 +51,3 @@ private
     @category = Category.find(params[:id])
   end
 end
-
-
-
-# As a Registered Admin...
-#
-# When I visit the root path, click "Login", fill in the form and click "Login",
-# click the "Categories" link, click the "Add New Category" link,
-# fill in the form, then click "Create Category"...
-#
-# I expect to be redirected to the category show page where I can view all categories.
