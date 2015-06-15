@@ -1,19 +1,28 @@
 class Admin::CategoriesController < Admin::BaseController
+
+  before_action(:set_category, only: [:show, :edit, :update, :destroy])
+
   def index
     @categories = Category.all
   end
 
   def new
     @category = Category.new
-    # @admin = User.find(params[:id])
-    # @category = Category.new(user_id: params[:user_id])
   end
 
   def edit
   end
 
+  def update
+    if @category.update(category_params)
+      flash.notice = "Category '#{@category.name}' Updated!"
+      redirect_to admin_category_path(@category)
+    else
+      render :edit
+    end
+  end
+
   def show
-    @category = Category.find(params[:id])
   end
 
   def create
@@ -30,6 +39,10 @@ private
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def set_category
+    @category = Category.find(params[:id])
   end
 end
 
